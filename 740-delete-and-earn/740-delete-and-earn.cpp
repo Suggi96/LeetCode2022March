@@ -2,8 +2,8 @@ class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
         int n = 10002;
-        vector<int> dp(n, 0);
-        vector<int> freq(n, 0);
+        int freq[10002] = {0};
+        int dp[10002] = {0};
         for(int i=0;i<nums.size();i++) {
             freq[nums[i]]++;
         }
