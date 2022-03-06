@@ -1,20 +1,20 @@
 class Solution {
 public:
     int mostFrequent(vector<int>& nums, int key) {
-        int freq[1001] = {0};
-        //count freq of all elements which are targets
-        for(int i=1;i<nums.size();i++) {
-            if(nums[i-1]==key) {
-                freq[nums[i]]++;
+        unordered_map<int, int> mp;
+        for(int i=0;i<nums.size()-1;i++) {
+            if(nums[i]==key) {
+                mp[nums[i+1]]++;
             }
         }
-        //find element with max frequency in freq array
-        int max = 0;
-        for(int i=1;i<1001;i++) {
-            if(freq[i]>freq[max]) {
-                max = i;
+        int max = INT_MIN;
+        int target = 0;
+        for(auto it: mp) {
+            if(it.second > max) {
+                target = it.first;
+                max = it.second;
             }
         }
-        return max;
-    }
+        return target;
+    }  
 };
