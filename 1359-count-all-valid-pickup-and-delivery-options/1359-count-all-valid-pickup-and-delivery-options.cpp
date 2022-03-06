@@ -7,7 +7,7 @@ public:
         dp[2] = 6l;
         for(int i=3;i<=n;i++) {
             int oddNo = 2*i - 1;
-            int permutations = oddNo%mod * ((oddNo+1)%mod)/2;
+            int permutations = oddNo * (oddNo+1)/2;
             dp[i] = (dp[i-1] *  permutations) % mod;
         }
         return (int)dp[n];
