@@ -8,7 +8,7 @@ public:
             if(mp.find(x)!=mp.end()) {
                 ans.push_back(i);
                 ans.push_back(mp[x]);
-                break;
+                return ans;
             }
             else {
                 mp[nums[i]] = i;
