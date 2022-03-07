@@ -10,7 +10,7 @@ public:
                 ans.push_back(mp[x]);
             }
             else {
-                mp.insert({nums[i], i});
+                mp[nums[i]] = i;
             }
         }
         return ans;
