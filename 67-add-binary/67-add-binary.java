@@ -2,7 +2,7 @@ class Solution {
     public String addBinary(String a, String b) {
         int i = a.length()-1;
         int j = b.length()-1;
-        StringBuilder res = new StringBuilder();
+        String res = new String();
         int carry = 0;
         while(i>=0 || j>=0) {
             int sum = carry;
@@ -13,11 +13,11 @@ class Solution {
                 sum += b.charAt(j--) - '0';
             }
             carry = sum > 1 ? 1 : 0;
-            res.append(sum%2);
+            res = String.valueOf(sum%2) + res;
         }
         if(carry!=0) 
-            res.append(carry);
+            res = String.valueOf(carry) + res;
         
-        return res.reverse().toString();
+        return res;
     }
 }
