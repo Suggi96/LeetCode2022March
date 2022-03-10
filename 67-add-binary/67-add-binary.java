@@ -13,10 +13,10 @@ class Solution {
                 sum += b.charAt(j--) - '0';
             }
             carry = sum > 1 ? 1 : 0;
-            res = String.valueOf(sum%2) + res;
+            res = sum%2 + res;
         }
         if(carry!=0) 
-            res = String.valueOf(carry) + res;
+            res = carry + res;
         
         return res;
     }
