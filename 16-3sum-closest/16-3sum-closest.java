@@ -16,10 +16,9 @@ class Solution {
                     end--;
                 }
                  if(Math.abs(curSum - target) < Math.abs(closestSum - target)) {
-                closestSum = curSum;
+                    closestSum = curSum;
+                 }
             }
-            }
-           
         }
         return closestSum;
     }
