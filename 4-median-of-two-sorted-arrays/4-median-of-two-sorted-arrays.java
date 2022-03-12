@@ -30,8 +30,8 @@ class Solution {
         }
         else {
             int x = (m+n)/2;
-            int p = a[x];
-            int q = a[x-1];
+            double p = a[x];
+            double q = a[x-1];
             return (p+q)/2.0;
         }
     }
