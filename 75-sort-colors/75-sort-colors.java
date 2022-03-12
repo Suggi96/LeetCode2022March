@@ -7,9 +7,8 @@ class Solution {
         int j = 0;
         for(int i=0;i<freq.length;i++) {
             while(freq[i]!=0) {
-                nums[j] = i;
+                nums[j++] = i;
                 freq[i]--;
-                j++;
             }
         }
     }
