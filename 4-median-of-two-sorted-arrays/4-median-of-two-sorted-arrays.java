@@ -26,7 +26,7 @@ class Solution {
             k++;
         }
         if((m+n)%2!=0) {
-            return a[(m+n)/2];
+            return (double)a[(m+n)/2];
         }
         else {
             int x = (m+n)/2;
