@@ -1,19 +1,25 @@
 class Solution {
-    public List<List<Integer>> permute(int[] num) {
-       	LinkedList<List<Integer>> res = new LinkedList<List<Integer>>();
-	res.add(new LinkedList<Integer>());
-	for (int n : num) {
-		int size = res.size();
-		while (size > 0) {
-			List<Integer> r = res.pollFirst();
-			for (int i = 0; i <= r.size(); i++) {
-				List<Integer> temp = new LinkedList<Integer>(r);
-				temp.add(i, n);
-				res.add(temp);
-			}
-			size--;
-		}
-	}
-	return res; 
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> ds = new ArrayList<>();
+        boolean freq[] = new boolean[nums.length];
+        recurPermute(nums, ds, ans, freq);
+        return ans;
+    }
+    public void recurPermute(int[] nums, List<Integer> ds, 
+                            List<List<Integer>> ans, boolean[] freq) {
+        if(ds.size()==nums.length) {
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+        for(int i=0;i<nums.length;i++) {
+            if(freq[i]==false) {
+                freq[i] = true;
+                ds.add(nums[i]);
+                recurPermute(nums, ds, ans, freq);
+                ds.remove(ds.size()-1);
+                freq[i] = false;
+            }
+        }
     }
 }
