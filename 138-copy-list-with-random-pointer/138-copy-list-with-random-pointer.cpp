@@ -18,7 +18,8 @@ class Solution {
 public:
     Node* copyRandomList(Node* head) {
         Node* dummy = new Node(-1);
-        Node* cur = head, *copy = dummy;
+        Node* cur = head;
+        Node* copy = dummy;
         map<Node*, Node*> mp;
         while(cur!=NULL) {
             copy->next = new Node(cur->val);
