@@ -1,31 +1,28 @@
 class Solution {
-public:
-    int digArtifacts(int n, vector<vector<int>>& artifacts, vector<vector<int>>& dig) {
-        vector<vector<bool>>visited(n,vector<bool>(n,0));
-        for(auto vec:dig){
-            visited[vec[0]][vec[1]] = 1;
+    public int digArtifacts(int n, int[][] artifacts, int[][] dig) {
+boolean visit[][]=new boolean[n][n];
+        for(int arr[]:dig){
+            visit[arr[0]][arr[1]]=true;
         }
         
-        int count = 0;
-        for(auto artifact:artifacts){
-            int r1 = artifact[0];
-            int c1 = artifact[1];
-            int r2 = artifact[2];
-            int c2 = artifact[3];
-            bool flag = true;
-			
-            for(int i = r1;i<=r2;i++){
-                for(int j = c1;j<=c2;j++){
-                    if(!visited[i][j]){
+        int ans=0;
+        for(int arr[]:artifacts){
+            
+            boolean flag=true;
+            int x1 = arr[0];
+            int y1 = arr[1];
+            int x2 = arr[2];
+            int y2 = arr[3];
+            for(int i=x1;i<=x2;i++){
+                for(int j=y1;j<=y2;j++){
+                    if(visit[i][j]==false) {
                         flag = false;
+                        break;
                     }
                 }
             }
-            
-            if(flag)
-                count++;
+            if(flag) ans++;
         }
-        
-        return count;
+        return ans;
     }
-};
+}
