@@ -7,8 +7,8 @@ public:
             if(nums[j]==key)
                 q.push(j);
         }
-        for(int i=0;i<nums.size();i++) {
-             if(q.empty()) break;
+        for(int i=0;i<nums.size() && q.size()>0;i++) {
+         //    if(q.empty()) break;
             int j = q.front();
             if(abs(i-j)<=k) 
                 ans.push_back(i);
