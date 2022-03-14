@@ -2,10 +2,11 @@ class Solution {
     public String simplifyPath(String path) {
         Stack<String> st = new Stack<>();
         for(int i=0;i<path.length();i++) {
-            String temp = "";
+          
             if(path.charAt(i)=='/') {
                 continue;
             }
+              String temp = "";
             //build the string
             while(i<path.length() && path.charAt(i)!='/') {
                 temp += path.charAt(i);
