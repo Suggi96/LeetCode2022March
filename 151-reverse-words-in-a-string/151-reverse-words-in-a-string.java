@@ -1,6 +1,6 @@
 class Solution {
     public String reverseWords(String s) {
-        Stack<String> st = new Stack<>();
+        String res = "";
         int i = 0;
         int n = s.length();
         while(i<n) {
@@ -11,14 +11,10 @@ class Solution {
             else if(s.charAt(i)!=' ') {
                 int j = i;
                 while(j<n && s.charAt(j)!=' ') j++;
-                st.push(s.substring(i ,j));
+                res = s.substring(i ,j) + " " + res;
                 i = j;
             }
         }
-        String res = "";
-        while(!st.isEmpty()) {
-            res =  res + " " + st.pop();
-        }
-        return res.substring(1, res.length());
+        return res.substring(0, res.length()-1);
     }
 }
