@@ -8,7 +8,7 @@ class Solution {
                 i++;
                 continue;
             }
-            else if(s.charAt(i)!=' ') {
+            else {
                 int j = i;
                 while(j<n && s.charAt(j)!=' ') j++;
                 res = s.substring(i ,j) + " " + res;
