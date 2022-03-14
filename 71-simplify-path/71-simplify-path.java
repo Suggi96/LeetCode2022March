@@ -1,13 +1,36 @@
 class Solution {
     public String simplifyPath(String path) {
-       Deque<String> stack = new LinkedList<>();
-    Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
-    for (String dir : path.split("/")) {
-        if (dir.equals("..") && !stack.isEmpty()) stack.pop();
-        else if (!skip.contains(dir)) stack.push(dir);
-    }
-    String res = "";
-    for (String dir : stack) res = "/" + dir + res;
-    return res.isEmpty() ? "/" : res;  
+        Stack<String> st = new Stack<>();
+        for(int i=0;i<path.length();i++) {
+            String temp = "";
+            if(path.charAt(i)=='/') {
+                continue;
+            }
+            //build the string
+            while(i<path.length() && path.charAt(i)!='/') {
+                temp += path.charAt(i);
+                i++;
+            }
+            if(temp.equals(".")) { //do nothing
+                continue;
+            }
+            else if(temp.equals("..")) {
+                if(!st.empty()) {
+                    st.pop();
+                }
+            }
+            //add word into stack
+            else {
+                st.push(temp);
+            }
+        }
+        String ans = ""; //generate the absolute path
+        while(!st.empty()) {
+            ans = "/" + st.peek() + ans;
+            st.pop();
+        }
+        if(ans=="") 
+            return "/";
+        return ans;
     }
 }
