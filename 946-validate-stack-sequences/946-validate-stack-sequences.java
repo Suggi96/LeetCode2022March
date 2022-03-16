@@ -10,6 +10,8 @@ class Solution {
             }
                 
         }
-        return st.empty();                              
+        if(st.empty())
+            return true;
+        return false;
     }
 }
