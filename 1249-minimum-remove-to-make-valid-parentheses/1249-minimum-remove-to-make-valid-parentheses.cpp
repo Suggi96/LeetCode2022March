@@ -1,32 +1,42 @@
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        stack<pair<int, char>> st;
+        //left to right match ( with )
+        //right to left match ) with ( 
+        //maintain counter and mark extra parenthesis with # to delete
+        int counter = 0;
         int n = s.length();
-       for(int i=0;i<n;i++) {
-           if(s[i]==')' || s[i]=='(') {
-               if(st.empty()) {
-                   st.push({i, s[i]});
-               }
-               else if(s[i]==')' && st.top().second=='(') {
-                   st.pop();
-               }
-               else {
-                   st.push({i, s[i]});
-               }
-           }
-       }
-        set<int> hs;
-        while(!st.empty()) {
-            int index = st.top().first;
-            hs.insert(index);
-            st.pop();
+        for(int i=0;i<n;i++) {
+            if(s[i]=='(')
+                counter++;
+            else if(s[i]==')') {
+                if(counter>0) {
+                    counter--;
+                }
+                else {
+                    s[i] = '#'; //extra ) is found
+                }
+            }
+        }
+        counter = 0;
+        for(int i=n-1;i>=0;i--) {
+            if(s[i]==')')
+                counter++;
+            else if(s[i]=='(') {
+                if(counter>0) {
+                    counter--;
+                }
+                else {
+                    s[i] = '#'; //extra ( is found;
+                }
+            }
         }
         string ans = "";
         for(int i=0;i<n;i++) {
-            if(hs.find(i)==hs.end())
-                ans += s[i];
+            if(s[i]!='#')
+                ans+=s[i];
         }
         return ans;
+        
     } 
 };
