@@ -9,7 +9,7 @@ class Solution {
                 list.add(start + "->" + nums[i]);
             }
             else {
-                list.add(String.valueOf(start));
+                list.add(start + "");
             }
         }
         return list;
