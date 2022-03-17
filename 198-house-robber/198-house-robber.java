@@ -1,9 +1,10 @@
 class Solution {
     public int rob(int[] nums) {
-        return maxMoney(0, nums, new HashMap<Integer, Integer>());
+        int n = nums.length;
+        return maxMoney(0, n-1, nums, new HashMap<Integer, Integer>());
     }
-    private int maxMoney(int curIndex, int[] nums, HashMap<Integer,Integer> memo) {
-        if(curIndex>=nums.length)
+    private int maxMoney(int curIndex, int lastIdx, int[] nums,                                         HashMap<Integer,Integer> memo) {
+        if(curIndex>lastIdx)
             return 0;
         
         int curKey = curIndex;
@@ -11,8 +12,8 @@ class Solution {
             return memo.get(curKey);
         }
         
-        int rob = nums[curIndex] + maxMoney(curIndex+2, nums, memo);
-        int noRob = maxMoney(curIndex+1, nums, memo);
+        int rob = nums[curIndex] + maxMoney(curIndex+2, lastIdx, nums, memo);
+        int noRob = maxMoney(curIndex+1, lastIdx, nums, memo);
         
         memo.put(curKey, Math.max(rob, noRob));
         
