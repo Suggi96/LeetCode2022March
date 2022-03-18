@@ -6,25 +6,25 @@ class Solution {
         for(int i=0;i<s.length();i++) {
             lastIndex[s.charAt(i) - 'a'] = i;
         }
-        Stack<Integer> st = new Stack<>();
+        Stack<Character> st = new Stack<>();
         for(int i=0;i<s.length();i++) {
-            int c = s.charAt(i) - 'a';
-            if(seen[c]==true) //indicates element already in stack so do nothing
+            char c = s.charAt(i);
+            if(seen[c - 'a']==true) //indicates element already in stack so do nothing
                 continue;
             
             //popping rules
-            while(!st.empty() && st.peek()>c && i < lastIndex[st.peek()]) {
-                seen[st.pop()] = false;
+            while(!st.empty() && st.peek()>c && i < lastIndex[st.peek() - 'a']) {
+                seen[st.pop() - 'a'] = false;
             }
             //push cur element to stack
             st.push(c);
-            seen[c] = true;
+            seen[c - 'a'] = true;
         }
        //pop elements from stack and reverse the string and return it
         StringBuilder str = new StringBuilder();
         while(!st.empty()) {
-            int popped = st.peek();
-            str.append((char)(popped + 'a'));
+         //   int popped = st.peek();
+            str.append(st.peek());
             st.pop();
         }
         return str.reverse().toString();
