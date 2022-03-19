@@ -14,7 +14,7 @@ class Solution {
                 return 0;
         }
         
-        String curKey = Integer.toString(curIdx) + "-" + Integer.toString(curSum);
+        String curKey = String.valueOf(curIdx) + "-" + String.valueOf(curSum);
         if(memo.containsKey(curKey))
             return memo.get(curKey);
         
