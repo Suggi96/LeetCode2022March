@@ -18,8 +18,8 @@ class Solution {
         if(memo.containsKey(curKey))
             return memo.get(curKey);
         
-        int addPlus = findWays(curIdx+1, curSum+nums[curIdx], nums, target, memo);
-        int addMinus = findWays(curIdx+1, curSum-nums[curIdx], nums, target, memo);
+        int addPlus = findWays(curIdx+1, curSum-nums[curIdx], nums, target, memo);
+        int addMinus = findWays(curIdx+1, curSum+nums[curIdx], nums, target, memo);
         
         memo.put(curKey, addPlus + addMinus); //total ways
         
