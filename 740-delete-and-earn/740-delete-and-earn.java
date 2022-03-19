@@ -1,6 +1,6 @@
 class Solution {
     public int deleteAndEarn(int[] nums) {
-        int[] freq = new int[10002];
+        int[] freq = new int[10001]; //max value in nums can be 10000
         for(int i=0;i<nums.length;i++) {
             freq[nums[i]]++;
         }
