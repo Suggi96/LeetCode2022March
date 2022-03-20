@@ -1,12 +1,24 @@
 class Solution {
-    public int countHillValley(int[] a) {
-        int r = 0, left = a[0];
-        for(int i = 1; i < a.length - 1; i++)
-            if(left < a[i] && a[i] > a[i + 1] || left > a[i] && a[i] < a[i + 1]){
-                r++;
-                left = a[i];
-            }
-        return r;
+    public int countHillValley(int[] nums) {
+        int hill = 0;
+        int valley = 0;
+        int n = nums.length;
+        for(int i=1;i<=n-2;i++) {
+            if(nums[i-1]==nums[i]) continue;
+            int j = i-1;
+            int k = i+1;
+            while(j>=0 && nums[i]==nums[j]) j--;
+            if(j < 0) continue;
+            while(k<n && nums[i]==nums[k]) k++;
+            if(k == n) continue;
+            
+            if(nums[i]>nums[j] && nums[i]>nums[k])
+                hill++;
+            if(nums[i]<nums[j] && nums[i]<nums[k])
+                valley++;
+        }
+
+        return hill + valley;
         
     }
 }
