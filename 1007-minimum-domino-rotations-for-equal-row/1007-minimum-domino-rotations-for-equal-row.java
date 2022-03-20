@@ -22,16 +22,13 @@ class Solution {
         int swap = 0;
         int i = 0, n = source.length;
         while(i<n) {
-            if(source[i]!=k && dest[i]==k) {
+            if(source[i]!=k && dest[i]!=k)
+                return 999;
+            
+           else if(source[i]!=k && dest[i]==k) {
                 swap++;
-                i++;
             }
-            else if(source[i]==k) {
-                i++;
-                continue;
-            }
-            else 
-                return 999; //impossible to make arr values to k. So i return 999
+            i++;
         }
    
         return swap;
