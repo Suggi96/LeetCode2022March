@@ -10,9 +10,6 @@ class Solution {
         int swapsT = makeEqual(tops, bottoms, maxFreq_element_T);
         int swapsB = makeEqual(bottoms, tops, maxFreq_element_B);
         
-        // if(swapsT==0 || swapsB==0)
-        //     return 0;
-        
         if(swapsT==999 && swapsB==999)
             return -1;
         
