@@ -1,52 +1,34 @@
 class Solution {
     public int minDominoRotations(int[] tops, int[] bottoms) {
-        HashMap<Integer, Integer> freqT = new HashMap<>();
-        HashMap<Integer, Integer> freqB = new HashMap<>();
-        int maxFreq_element_T = maxFreq_StoreFreq(freqT, tops);
-        int maxFreq_element_B = maxFreq_StoreFreq(freqB, bottoms);
-
-        //iterate through tops and bottoms , find swaps to make entire top or bottom equal
-        //return min of both swaps as answer
-        int swapsT = makeEqual(tops, bottoms, maxFreq_element_T);
-        int swapsB = makeEqual(bottoms, tops, maxFreq_element_B);
+        int ans1 = minConversionToTarget(tops, bottoms, tops[0]);
+        int ans2 = minConversionToTarget(tops, bottoms, bottoms[0]);
         
-        if(swapsT==999 && swapsB==999)
-            return -1;
+        if(ans1>0 && ans2>0) {
+            return Math.min(ans1, ans2);
+        }
+        else if(ans1>0) {
+            return ans1;
+        }
+        else {
+            return ans2;
+        }
         
-        return Math.min(swapsT, swapsB);
- 
     }
     
-    private int makeEqual(int[] source, int[] dest, int k) {
-        //goal is to make source equal with k
-        int swap = 0;
-        int i = 0, n = source.length;
-        while(i<n) {
-            if(source[i]!=k && dest[i]!=k)
-                return 999;
+    private int minConversionToTarget(int[] tops, int[] bottoms, int target) {
+        int swapTop = 0;
+        int swapBottom = 0;
+        for(int i=0;i<tops.length;i++) {
+            if(tops[i]!=target && bottoms[i]!=target)
+                return -1;
             
-           else if(source[i]!=k && dest[i]==k) {
-                swap++;
-            }
-            i++;
+            if(tops[i]!=target && bottoms[i]==target)
+                swapTop++;
+            
+            if(bottoms[i]!=target && tops[i]==target)
+                swapBottom++;
         }
-   
-        return swap;
         
-    }
-    private int maxFreq_StoreFreq(HashMap<Integer, Integer> map, int[] arr) {
-        for(int i: arr) {
-            map.put(i, map.getOrDefault(i, 0)+1);
-        }
-        int maxi = Integer.MIN_VALUE;
-        int maxElement = 0;
-        for(Map.Entry<Integer, Integer> e: map.entrySet()) {
-            int freq = e.getValue();
-            if(freq>maxi) {
-                maxi = freq;
-                maxElement = e.getKey();
-            }
-        }
-        return maxElement;
+        return Math.min(swapTop, swapBottom);
     }
 }
