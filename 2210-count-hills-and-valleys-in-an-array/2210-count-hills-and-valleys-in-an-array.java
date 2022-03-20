@@ -8,9 +8,10 @@ class Solution {
             int j = i-1;
             int k = i+1;
             while(j>=0 && nums[i]==nums[j]) j--;
-            if(j < 0) continue;
+          //  if(j < 0) continue; //no left neighbour
+            
             while(k<n && nums[i]==nums[k]) k++;
-            if(k == n) continue;
+            if(k == n) continue; //no right neighbour
             
             if(nums[i]>nums[j] && nums[i]>nums[k])
                 hill++;
