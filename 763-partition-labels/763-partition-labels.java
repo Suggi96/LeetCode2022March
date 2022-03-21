@@ -1,21 +1,21 @@
 class Solution {
     public List<Integer> partitionLabels(String s) {
-        int end_idx[] = new int[26]; //array to store last occurance of each char in string
-        for(int i=0;i<s.length();i++)
-        {
-            end_idx[s.charAt(i) - 'a']=i;
+        int[] lastSeen = new int[26];
+        List<String> word = new ArrayList<>();
+        for(int i=0;i<s.length();i++) {
+            char c = s.charAt(i);
+            lastSeen[c - 'a'] = i;
         }
-        List<Integer> res = new ArrayList<>();
-        int start=0,end=0;
-        for(int i=0;i<s.length();i++)
-        {
-            end = Math.max(end, end_idx[s.charAt(i) - 'a']);
-            if(i==end)
-            {
-                res.add(i-start+1); //start+1 because 0 based indexing and we need length of                                       partition
-                start=i+1;
-            }
-        }
-        return res;
+        int start = 0, end = 0;
+        List<Integer> ans = new ArrayList<>();
+        for(int i=0;i<s.length();i++) {
+             end = Math.max(end, lastSeen[s.charAt(i) - 'a']);
+             if(i==end) {
+                 ans.add(end-start+1);
+                 start = end+1;
+             }
+              
+        } 
+        return ans;
     }
 }
