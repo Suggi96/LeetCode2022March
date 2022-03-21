@@ -8,15 +8,18 @@ class Solution {
         int i = 0;
         int start = 0, end = 0;
         List<Integer> ans = new ArrayList<>();
+        List<String> words = new ArrayList<>();
         while(i<s.length()) {
             end = Math.max(end, lastSeen[s.charAt(i) - 'a']);
             if(i==end) {
                 ans.add(end - start + 1);
+                words.add(s.substring(start, i+1));
                 start = i + 1;
             }
             i++;
-              
         } 
+        for(String str: words)
+            System.out.println(str);
         return ans;
     }
 }
