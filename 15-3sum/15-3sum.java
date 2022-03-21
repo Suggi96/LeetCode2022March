@@ -13,10 +13,9 @@ class Solution {
                 int sum = nums[i] + nums[start] + nums[end];
                 List<Integer> list = new ArrayList<>();
                 if(sum==0) {
-                    list.add(nums[i]);
-                    list.add(nums[start++]);
-                    list.add(nums[end--]);
-                    set.add(list);
+                    set.add(Arrays.asList(nums[i], nums[start], nums[end]));
+                    start++;
+                    end--;
                 }
                 else if(sum<0) {
                     start++;
