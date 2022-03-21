@@ -23,6 +23,6 @@ class Solution {
     private String sort(String s) {
         char[] c = s.toCharArray();
         Arrays.sort(c);
-        return String.valueOf(c);
+        return new String(c);
     }
 }
