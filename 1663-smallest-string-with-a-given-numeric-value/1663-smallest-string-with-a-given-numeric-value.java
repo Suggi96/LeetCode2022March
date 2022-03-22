@@ -1,13 +1,17 @@
 class Solution {
     public String getSmallestString(int n, int k) {
-        char res[] = new char[n];
-        Arrays.fill(res, 'a');
-        k -= n;
-        
-        while(k > 0){
-            res[--n] += Math.min(25, k);
-            k -= Math.min(25, k);
+        char[] c = new char[n];
+        for(int i=0;i<n;i++) {
+            c[i] = 'a';
+            k = k - 1;
         }
-        return String.valueOf(res);
+        int idx = n-1;
+        while(k>0) {
+            int val = Math.min(25, k);
+            c[idx] = (char)(val + 'a');
+            idx--;
+            k = k - val;
+        }
+        return new String(c);
     }
 }
