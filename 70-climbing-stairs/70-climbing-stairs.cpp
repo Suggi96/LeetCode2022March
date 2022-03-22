@@ -1,24 +1,24 @@
 class Solution {
 public:
     int climbStairs(int n) {
-        map<int, int> memo;
-        return solve(0, n, memo);
+        unordered_map<int, int> mp;
+       return totalWays(0, n, mp); 
     }
-    int solve(int curStair, int targetStair, map<int, int> &memo) {
-        if(curStair==targetStair)
+    int totalWays(int idx, int n, unordered_map<int, int> &mp) {
+        if(idx==n)
             return 1;
-        if(curStair>targetStair)
+        if(idx>n)
             return 0;
         
-        int curKey = curStair;
-        if(memo.find(curKey)!=memo.end()) {
-            return memo[curKey];
-        }
-        int oneJump = solve(curStair+1, targetStair, memo);
-        int twoJumps = solve(curStair+2, targetStair, memo);
+        int curKey = idx;
+        if(mp.find(curKey)!=mp.end())
+            return mp[curKey];
         
-        memo[curKey] = oneJump + twoJumps;
+        int oneJump = totalWays(idx+1, n, mp);
+        int twoJump = totalWays(idx+2, n, mp);
         
-        return oneJump+twoJumps;
+        mp[curKey] = oneJump + twoJump;
+        
+        return mp[curKey];
     }
 };
