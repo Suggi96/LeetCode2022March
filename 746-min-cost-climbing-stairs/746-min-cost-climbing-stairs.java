@@ -9,12 +9,8 @@ class Solution {
     private int minCost(int curIndex, int n, int[] cost, 
                         HashMap<Integer, Integer> memo) {
         //base case
-        if(curIndex==n) {
+        if(curIndex>=cost.length)
             return 0;
-        }
-        if(curIndex>n) {
-            return 0;
-        }
         
         int curKey = curIndex;
         if(memo.containsKey(curKey)) {
