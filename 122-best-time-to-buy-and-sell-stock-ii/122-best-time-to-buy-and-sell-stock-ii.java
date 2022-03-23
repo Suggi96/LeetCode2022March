@@ -2,6 +2,8 @@ class Solution {
     public int maxProfit(int[] prices) {
         int canBuy = 1; //buy only if its 1 otherwise its 0 so sell
         int idx = 0; //we start at index 0
+        
+        //no transaction limit in this question
         return maxprofit(idx, canBuy, prices, 
                          new HashMap<String,Integer>());
     }
