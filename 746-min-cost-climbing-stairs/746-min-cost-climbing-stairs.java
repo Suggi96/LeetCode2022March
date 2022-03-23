@@ -13,7 +13,7 @@ class Solution {
             return 0;
         }
         if(curIndex>n) {
-            return 1001;
+            return 0;
         }
         
         int curKey = curIndex;
