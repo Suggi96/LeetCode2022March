@@ -1,10 +1,13 @@
 class Solution {
     public int brokenCalc(int X, int Y) {
         int res = 0;
-        while (Y > X) {
-            Y = Y % 2 > 0 ? Y + 1 : Y / 2;
+        while(Y > X) {
             res++;
+            if(Y%2==0)
+                Y = Y/2;
+            else
+                Y = Y+1;
         }
-        return res + X - Y;
+        return res + (X-Y);
     }
 }
