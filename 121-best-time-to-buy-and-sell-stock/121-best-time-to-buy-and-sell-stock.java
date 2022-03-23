@@ -9,7 +9,7 @@ class Solution {
     private int maxprofit(int idx, int canBuy, int transactionCount, int[] prices,
                          HashMap<String, Integer> memo) {
         //base case when idx>=prices.length or transactionCount is 0 
-        //I return 0 because impossible to make money when i dont have transaction count          // or reached index which isnt present in prices array
+        //I return 0 because impossible to make money when i dont have transaction               count or reached index which greater last index of array
         if(idx>=prices.length || transactionCount==0)
             return 0;
         
