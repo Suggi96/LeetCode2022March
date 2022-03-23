@@ -1,13 +1,28 @@
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
-                int n = cost.size();
-        vector<int> dp(n + 1);  // dp[i] is minimum cost to reach to i_th floor
-        for (int i = 2; i <= n; i++) {
-            int jumpOneStep = dp[i - 1] + cost[i - 1];  // Minimum cost if we jump 1 step from floor (i-1)_th to i_th floor
-            int jumpTwoStep = dp[i - 2] + cost[i - 2];  // Minimum cost if we jump 2 steps from floor (i-2)_th to i_th floor
-            dp[i] = min(jumpOneStep, jumpTwoStep);
-        }
-        return dp[n];
+        unordered_map<int, int> mp1;
+        unordered_map<int, int> mp2;
+        
+        int ans1 = minCost(0, cost, mp1);
+        int ans2 = minCost(1, cost, mp2);
+        
+        return min(ans1, ans2);
+    }
+    
+    int minCost(int idx, vector<int> &cost, unordered_map<int, int> &mp)
+    {
+        if(idx >= cost.size()) return 0;
+        
+        int curKey = idx;
+        if(mp.find(idx)!=mp.end())
+            return mp[idx];
+        
+        int oneJump = cost[idx] + minCost(idx+1, cost, mp);
+        int twoJumps = cost[idx] + minCost(idx+2, cost, mp);
+        
+        mp[curKey] = min(oneJump, twoJumps);
+        return mp[curKey];
+        
     }
 };
