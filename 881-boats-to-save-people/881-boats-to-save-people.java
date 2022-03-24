@@ -12,8 +12,8 @@ class Solution {
                     j--;
                 }
                 count++;
-
         }
+
         return count;
     }
 }
