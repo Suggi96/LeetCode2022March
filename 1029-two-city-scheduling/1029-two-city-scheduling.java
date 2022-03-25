@@ -1,6 +1,12 @@
 class Solution {
     public int twoCitySchedCost(int[][] costs) {
         Arrays.sort(costs, new custom_comp());
+        for(int i=0;i<costs.length;i++) {
+            for(int j=0;j<costs[0].length;j++) {
+                System.out.print(costs[i][j]+" ");
+            }
+            System.out.println();
+        }
         int n = costs.length;
         int mincost = 0;
         for(int i=0;i<n/2;i++) {
