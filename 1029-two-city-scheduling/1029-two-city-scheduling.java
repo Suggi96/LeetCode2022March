@@ -4,7 +4,7 @@ class Solution {
         int n = costs.length;
         int mincost = 0;
         for(int i=0;i<n/2;i++) {
-            mincost += costs[i][0]; //add 0 to len/2 as to mincost; indicates A
+            mincost += costs[i][0]; //add 0 to len/2 to mincost; indicates A
         }
         for(int i=n/2;i<n;i++) {
             mincost += costs[i][1]; //add next n/2 to n to mincost; indicates B
