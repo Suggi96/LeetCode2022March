@@ -1,5 +1,6 @@
 class Solution {
     public int numTrees(int n) {
+        //dp approach and memoisation
         return nthCatNum(n, new HashMap<Integer, Integer>());
     }
     private int nthCatNum(int n, HashMap<Integer, Integer> memo) {
