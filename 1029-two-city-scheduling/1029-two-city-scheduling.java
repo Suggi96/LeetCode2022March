@@ -16,7 +16,7 @@ class Solution {
         //to sort in ascending order based on diff [0][0] - [1][1]
         //taking two arrays p1, p2 :
         public int compare(int[] p1, int[] p2) {
-            return (p1[0] - p2[0] ) - (p1[1] - p2[1]);
+            return  (p2[1] - p2[0]) - (p1[1] - p1[0] );
         }
     }
 }
