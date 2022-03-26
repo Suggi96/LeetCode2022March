@@ -16,7 +16,7 @@ class Solution {
 			}
 			maxi = Math.max(maxi, len);
 			len = 0;
-			i = i+1;
+			i++;
 			set.clear();
 		}
 		return maxi;
