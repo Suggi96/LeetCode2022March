@@ -7,7 +7,7 @@ class Solution {
         
 		HashSet<Character> set = new HashSet<>();
 		int i = 0, j = 0;
-		while(i<n) {
+		while(j<n) {
 			j = i;
 			while(j<n && !set.contains(ch[j])) {
 				len++;
