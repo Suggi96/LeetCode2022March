@@ -10,6 +10,7 @@ class Solution {
         if((n-d)%2==0)
             return d;
         
-        return d+1;
+        return d+1; //n is odd element delete last element so that it doesnt 
+                    //affect last element
     }
 }
