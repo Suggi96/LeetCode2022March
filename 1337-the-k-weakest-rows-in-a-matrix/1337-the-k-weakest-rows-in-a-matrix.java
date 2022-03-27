@@ -8,6 +8,7 @@ class Solution {
             for(int j=0;j<n;j++) {
                 if(mat[i][j]==1)
                     count++;
+                else break;
             }
             map.put(i, count);
             count = 0;
