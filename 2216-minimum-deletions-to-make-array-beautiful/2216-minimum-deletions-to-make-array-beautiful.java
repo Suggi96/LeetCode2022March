@@ -10,7 +10,6 @@ class Solution {
         if((n-d)%2==0)
             return d;
         
-        return d+1; //n is odd element delete last element so that it doesnt 
-                    //affect last element
+        return d+1; //n is odd len after deletion then del last element so that it                       doesnt affect our min deletion answer
     }
 }
