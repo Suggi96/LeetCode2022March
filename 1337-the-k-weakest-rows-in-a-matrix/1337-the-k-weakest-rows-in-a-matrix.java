@@ -15,8 +15,11 @@ class Solution {
         }
         List<Map.Entry<Integer, Integer> > list =
                new LinkedList<Map.Entry<Integer, Integer>> (map.entrySet());
-        Collections.sort(list, new my_comp());
-        map.clear();
+        Collections.sort(list, (a, b) -> {
+            if(a.getValue()==b.getValue())
+                return a.getKey() - b.getKey();
+            return a.getValue() - b.getValue();
+        });
         int i = 0;
         int res[] = new int[k];
         for(Map.Entry<Integer, Integer> e: list) {
@@ -28,13 +31,5 @@ class Solution {
             }
         }
         return res;
-    }
-    class my_comp implements Comparator<Map.Entry<Integer, Integer>> {
-        public int compare(Map.Entry<Integer, Integer> a, 
-                           Map.Entry<Integer, Integer> b) {
-            if(a.getValue()==b.getValue())
-                return a.getKey() - a.getKey();
-            return a.getValue() - b.getValue();
-        }
     }
 }
