@@ -11,7 +11,6 @@ class Solution {
         for(int i: set1) {
             if(!set2.contains(i)) {
                 temp.add(i);
-                // System.out.println(i);
             }
         }
         ans.add(new ArrayList<>(temp));
@@ -19,7 +18,6 @@ class Solution {
         for(int i: set2) {
             if(!set1.contains(i)) {
                 temp.add(i);
-                // System.out.println(i);
             }
         }
         ans.add(new ArrayList<>(temp));
