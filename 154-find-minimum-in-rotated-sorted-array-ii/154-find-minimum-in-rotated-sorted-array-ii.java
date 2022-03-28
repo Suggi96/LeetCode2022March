@@ -8,12 +8,11 @@ class Solution {
             if(nums[high]==nums[mid]) {
                 high--;
             }
-            //check if left half is sorted. if yes min element lies in left half
-            else if(nums[high] > nums[mid]) {
-                high = mid;
+            else if(nums[mid] > nums[high]) {
+                low = mid + 1;
             }
             else {
-                low = mid + 1; //right half is sorted and min element must lie in right half
+                high = mid;
             }
         }
         return nums[low];
