@@ -7,7 +7,7 @@ class Solution {
             if(nums[mid]>nums[r])
                 l = mid+1;
             else
-                r = mid;
+                r = mid; //nums[mid]<=r case
         }
         return nums[l];
     }
