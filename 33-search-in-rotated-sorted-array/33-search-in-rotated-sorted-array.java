@@ -13,7 +13,7 @@ class Solution {
         }
         // when loop break l will have index of min element
         int minIdx = l;
-        if(target<=nums[n-1])
+        if(target>=nums[minIdx] && target<=nums[n-1])
            return binarySearch(nums, target, minIdx, n-1);
         else
           return binarySearch(nums, target, 0, minIdx-1);
