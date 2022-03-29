@@ -4,15 +4,10 @@ class Solution {
         for(char c: s.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0)+1);
         }
-        List<Pair<Character, Integer> > list = new ArrayList<>();
-        for(Map.Entry<Character, Integer> e: map.entrySet()) {
-            list.add(new Pair<Character, Integer>(e.getKey(), e.getValue()) );
-        }
-        Collections.sort(list, (a, b)-> {
-            return b.getValue() - a.getValue();
-        });
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, new my_comp());
         StringBuilder ans = new StringBuilder();
-        for(Pair<Character, Integer> e: list) {
+        for(Map.Entry<Character, Integer> e: list) {
             int count = 0;
             while(count!=e.getValue()) {
                 ans.append(e.getKey());
@@ -20,5 +15,10 @@ class Solution {
             }
         }
         return ans.toString();
+    }
+    class my_comp implements Comparator<Map.Entry<Character, Integer>> {
+        public int compare(Map.Entry<Character, Integer> a, Map.Entry<Character, Integer> b)         {
+            return b.getValue() - a.getValue();
+        }
     }
 }
