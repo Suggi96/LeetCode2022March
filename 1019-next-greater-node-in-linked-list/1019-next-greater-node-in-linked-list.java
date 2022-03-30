@@ -37,9 +37,4 @@ class Solution {
         }
         return ans;
     }
-    private void printStack(Stack<Integer> st) {
-        for(int i: st)
-            System.out.print(i+" ");
-        System.out.println();
-    }
 }
