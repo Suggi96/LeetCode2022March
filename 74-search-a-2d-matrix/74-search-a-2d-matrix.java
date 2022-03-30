@@ -14,7 +14,7 @@ class Solution {
             arr[i] = matrix[rowNum][idx];
             idx++;
         }
-          //apply binary search in the rowNum of matrix;
+        //apply binary search in the rowNum of matrix;
         return binarySearch(arr, target);
     }
     private boolean binarySearch(int[] arr, int target) {
