@@ -20,18 +20,19 @@ class Solution {
         return res;
     }
     private boolean canSplit(int largest, int[] nums, int m) {
-        int subarrays = 1; //used to count number of subarrays. 
+        int subarrays = 1; //used to count number of subarrays. we can default split subarray 
+                        //into single subarray if len 1
         int curSum = 0; 
         for(int i=0;i<nums.length;i++) {
             curSum += nums[i];
             if(curSum>largest) { //make split if curSum exceeds largest
-                curSum = nums[i]; //curSum starts from n in next iteration because 
+                curSum = nums[i]; //curSum starts from nums[i] in next iteration because 
                                 //it exceeded largest so we made a split and new subarray
-                                //starts from cur
+                                //starts from curSum
                 subarrays++; //increase subarrays count by 1;
             }
         }
-        if(subarrays <=m) //
+        if(subarrays <=m) //if successful split
             return true;
         return false;
     }
