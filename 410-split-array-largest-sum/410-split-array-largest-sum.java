@@ -31,9 +31,9 @@ class Solution {
                                 //starts from curSum
                 subarrays++; //increase subarrays count by 1;
             }
+            if(subarrays>m) //splitting is not possible into m subarrays
+                return false;
         }
-        if(subarrays <=m) //if successful split
-            return true;
-        return false;
+        return true;
     }
 }
