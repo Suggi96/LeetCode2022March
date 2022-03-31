@@ -5,15 +5,15 @@ class Solution {
         backTrack(s, 0, list, ans);
         return ans;
     }
-    private void backTrack(String s, int idx, List<String> list, List<List<String>> ans) {
+    private void backTrack(String s, int start, List<String> list, List<List<String>> ans) {
         //base case 
-        if(idx>=s.length()){
+        if(start>=s.length()){
             ans.add(new ArrayList<>(list));
             return;
         }
-        for(int i=idx;i<s.length();i++) {
-            if(isPalindrome(s, idx, i)) {
-                list.add(s.substring(idx, i+1));
+        for(int i=start;i<s.length();i++) {
+            if(isPalindrome(s, start, i)) {
+                list.add(s.substring(start, i+1));
                 backTrack(s, i+1, list, ans);
                 list.remove(list.size()-1);
             }
